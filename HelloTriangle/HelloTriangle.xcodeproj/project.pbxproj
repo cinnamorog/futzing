@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CA072B8D2B77A89E00306530 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA072B8C2B77A89E00306530 /* main.cpp */; };
-		CA072B9C2B77D27600306530 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA072B9B2B77D27600306530 /* CoreFoundation.framework */; };
-		CA072B9E2B77D28000306530 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA072B9D2B77D28000306530 /* IOKit.framework */; };
-		CA072BA02B77D28B00306530 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA072B9F2B77D28B00306530 /* Cocoa.framework */; };
-		CA072BA22B77D29500306530 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA072BA12B77D29500306530 /* CoreGraphics.framework */; };
-		CA072BA42B77D29F00306530 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA072BA32B77D29F00306530 /* CoreVideo.framework */; };
-		CA072BA62B77D34D00306530 /* libvulkan.1.3.275.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CA072BA52B77D34D00306530 /* libvulkan.1.3.275.dylib */; };
-		CA072BA82B77D7F000306530 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CA072BA72B77D7F000306530 /* libglfw.3.3.dylib */; };
+		CA615AAD2B782AA700AF83A8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA615AAC2B782AA700AF83A8 /* main.cpp */; };
+		CA615AB52B782B2E00AF83A8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA615AB42B782B2E00AF83A8 /* CoreVideo.framework */; };
+		CA615AB72B782B3600AF83A8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA615AB62B782B3600AF83A8 /* CoreGraphics.framework */; };
+		CA615AB92B782B4000AF83A8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA615AB82B782B4000AF83A8 /* Cocoa.framework */; };
+		CA615ABB2B782B4A00AF83A8 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA615ABA2B782B4A00AF83A8 /* IOKit.framework */; };
+		CA615ABD2B782B5700AF83A8 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA615ABC2B782B5700AF83A8 /* CoreFoundation.framework */; };
+		CA615ABF2B782BDB00AF83A8 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CA615ABE2B782BDB00AF83A8 /* libglfw.3.3.dylib */; };
+		CA615AC12B782C1300AF83A8 /* libvulkan.1.3.275.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CA615AC02B782C1300AF83A8 /* libvulkan.1.3.275.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CA072B872B77A89E00306530 /* CopyFiles */ = {
+		CA615AA72B782AA700AF83A8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -30,70 +30,70 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CA072B892B77A89E00306530 /* VulkanTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = VulkanTest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA072B8C2B77A89E00306530 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		CA072B9B2B77D27600306530 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		CA072B9D2B77D28000306530 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		CA072B9F2B77D28B00306530 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		CA072BA12B77D29500306530 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		CA072BA32B77D29F00306530 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		CA072BA52B77D34D00306530 /* libvulkan.1.3.275.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvulkan.1.3.275.dylib; path = ../../../VulkanSDK/macOS/lib/libvulkan.1.3.275.dylib; sourceTree = "<group>"; };
-		CA072BA72B77D7F000306530 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = "../../../VulkanSDK/glfw-3.3.9/build.linux/src/libglfw.3.3.dylib"; sourceTree = "<group>"; };
+		CA615AA92B782AA700AF83A8 /* HelloTriangle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HelloTriangle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA615AAC2B782AA700AF83A8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		CA615AB42B782B2E00AF83A8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		CA615AB62B782B3600AF83A8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CA615AB82B782B4000AF83A8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		CA615ABA2B782B4A00AF83A8 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		CA615ABC2B782B5700AF83A8 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		CA615ABE2B782BDB00AF83A8 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = "../../../VulkanSDK/glfw-3.3.9/build.linux/src/libglfw.3.3.dylib"; sourceTree = "<group>"; };
+		CA615AC02B782C1300AF83A8 /* libvulkan.1.3.275.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvulkan.1.3.275.dylib; path = ../../../VulkanSDK/macOS/lib/libvulkan.1.3.275.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CA072B862B77A89E00306530 /* Frameworks */ = {
+		CA615AA62B782AA700AF83A8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA072BA82B77D7F000306530 /* libglfw.3.3.dylib in Frameworks */,
-				CA072BA62B77D34D00306530 /* libvulkan.1.3.275.dylib in Frameworks */,
-				CA072BA42B77D29F00306530 /* CoreVideo.framework in Frameworks */,
-				CA072BA22B77D29500306530 /* CoreGraphics.framework in Frameworks */,
-				CA072BA02B77D28B00306530 /* Cocoa.framework in Frameworks */,
-				CA072B9E2B77D28000306530 /* IOKit.framework in Frameworks */,
-				CA072B9C2B77D27600306530 /* CoreFoundation.framework in Frameworks */,
+				CA615AC12B782C1300AF83A8 /* libvulkan.1.3.275.dylib in Frameworks */,
+				CA615ABF2B782BDB00AF83A8 /* libglfw.3.3.dylib in Frameworks */,
+				CA615ABD2B782B5700AF83A8 /* CoreFoundation.framework in Frameworks */,
+				CA615ABB2B782B4A00AF83A8 /* IOKit.framework in Frameworks */,
+				CA615AB92B782B4000AF83A8 /* Cocoa.framework in Frameworks */,
+				CA615AB72B782B3600AF83A8 /* CoreGraphics.framework in Frameworks */,
+				CA615AB52B782B2E00AF83A8 /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CA072B802B77A89E00306530 = {
+		CA615AA02B782AA700AF83A8 = {
 			isa = PBXGroup;
 			children = (
-				CA072B8B2B77A89E00306530 /* VulkanTest */,
-				CA072B8A2B77A89E00306530 /* Products */,
-				CA072B962B77CFF500306530 /* Frameworks */,
+				CA615AAB2B782AA700AF83A8 /* HelloTriangle */,
+				CA615AAA2B782AA700AF83A8 /* Products */,
+				CA615AB32B782B2E00AF83A8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		CA072B8A2B77A89E00306530 /* Products */ = {
+		CA615AAA2B782AA700AF83A8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CA072B892B77A89E00306530 /* VulkanTest */,
+				CA615AA92B782AA700AF83A8 /* HelloTriangle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CA072B8B2B77A89E00306530 /* VulkanTest */ = {
+		CA615AAB2B782AA700AF83A8 /* HelloTriangle */ = {
 			isa = PBXGroup;
 			children = (
-				CA072B8C2B77A89E00306530 /* main.cpp */,
+				CA615AAC2B782AA700AF83A8 /* main.cpp */,
 			);
-			path = VulkanTest;
+			path = HelloTriangle;
 			sourceTree = "<group>";
 		};
-		CA072B962B77CFF500306530 /* Frameworks */ = {
+		CA615AB32B782B2E00AF83A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CA072BA72B77D7F000306530 /* libglfw.3.3.dylib */,
-				CA072BA52B77D34D00306530 /* libvulkan.1.3.275.dylib */,
-				CA072BA32B77D29F00306530 /* CoreVideo.framework */,
-				CA072BA12B77D29500306530 /* CoreGraphics.framework */,
-				CA072B9F2B77D28B00306530 /* Cocoa.framework */,
-				CA072B9D2B77D28000306530 /* IOKit.framework */,
-				CA072B9B2B77D27600306530 /* CoreFoundation.framework */,
+				CA615AC02B782C1300AF83A8 /* libvulkan.1.3.275.dylib */,
+				CA615ABE2B782BDB00AF83A8 /* libglfw.3.3.dylib */,
+				CA615ABC2B782B5700AF83A8 /* CoreFoundation.framework */,
+				CA615ABA2B782B4A00AF83A8 /* IOKit.framework */,
+				CA615AB82B782B4000AF83A8 /* Cocoa.framework */,
+				CA615AB62B782B3600AF83A8 /* CoreGraphics.framework */,
+				CA615AB42B782B2E00AF83A8 /* CoreVideo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -101,38 +101,38 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CA072B882B77A89E00306530 /* VulkanTest */ = {
+		CA615AA82B782AA700AF83A8 /* HelloTriangle */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CA072B902B77A89E00306530 /* Build configuration list for PBXNativeTarget "VulkanTest" */;
+			buildConfigurationList = CA615AB02B782AA700AF83A8 /* Build configuration list for PBXNativeTarget "HelloTriangle" */;
 			buildPhases = (
-				CA072B852B77A89E00306530 /* Sources */,
-				CA072B862B77A89E00306530 /* Frameworks */,
-				CA072B872B77A89E00306530 /* CopyFiles */,
+				CA615AA52B782AA700AF83A8 /* Sources */,
+				CA615AA62B782AA700AF83A8 /* Frameworks */,
+				CA615AA72B782AA700AF83A8 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = VulkanTest;
-			productName = VulkanTest;
-			productReference = CA072B892B77A89E00306530 /* VulkanTest */;
+			name = HelloTriangle;
+			productName = HelloTriangle;
+			productReference = CA615AA92B782AA700AF83A8 /* HelloTriangle */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CA072B812B77A89E00306530 /* Project object */ = {
+		CA615AA12B782AA700AF83A8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
-					CA072B882B77A89E00306530 = {
+					CA615AA82B782AA700AF83A8 = {
 						CreatedOnToolsVersion = 15.2;
 					};
 				};
 			};
-			buildConfigurationList = CA072B842B77A89E00306530 /* Build configuration list for PBXProject "VulkanTest" */;
+			buildConfigurationList = CA615AA42B782AA700AF83A8 /* Build configuration list for PBXProject "HelloTriangle" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -140,29 +140,29 @@
 				en,
 				Base,
 			);
-			mainGroup = CA072B802B77A89E00306530;
-			productRefGroup = CA072B8A2B77A89E00306530 /* Products */;
+			mainGroup = CA615AA02B782AA700AF83A8;
+			productRefGroup = CA615AAA2B782AA700AF83A8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CA072B882B77A89E00306530 /* VulkanTest */,
+				CA615AA82B782AA700AF83A8 /* HelloTriangle */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CA072B852B77A89E00306530 /* Sources */ = {
+		CA615AA52B782AA700AF83A8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA072B8D2B77A89E00306530 /* main.cpp in Sources */,
+				CA615AAD2B782AA700AF83A8 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		CA072B8E2B77A89E00306530 /* Debug */ = {
+		CA615AAE2B782AA700AF83A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -223,7 +223,7 @@
 			};
 			name = Debug;
 		};
-		CA072B8F2B77A89E00306530 /* Release */ = {
+		CA615AAF2B782AA700AF83A8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -277,28 +277,24 @@
 			};
 			name = Release;
 		};
-		CA072B912B77A89E00306530 /* Debug */ = {
+		CA615AB12B782AA700AF83A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				LD_RUNPATH_SEARCH_PATHS = /usr/local/lib;
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		CA072B922B77A89E00306530 /* Release */ = {
+		CA615AB22B782AA700AF83A8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				LD_RUNPATH_SEARCH_PATHS = /usr/local/lib;
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -306,25 +302,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CA072B842B77A89E00306530 /* Build configuration list for PBXProject "VulkanTest" */ = {
+		CA615AA42B782AA700AF83A8 /* Build configuration list for PBXProject "HelloTriangle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CA072B8E2B77A89E00306530 /* Debug */,
-				CA072B8F2B77A89E00306530 /* Release */,
+				CA615AAE2B782AA700AF83A8 /* Debug */,
+				CA615AAF2B782AA700AF83A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CA072B902B77A89E00306530 /* Build configuration list for PBXNativeTarget "VulkanTest" */ = {
+		CA615AB02B782AA700AF83A8 /* Build configuration list for PBXNativeTarget "HelloTriangle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CA072B912B77A89E00306530 /* Debug */,
-				CA072B922B77A89E00306530 /* Release */,
+				CA615AB12B782AA700AF83A8 /* Debug */,
+				CA615AB22B782AA700AF83A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CA072B812B77A89E00306530 /* Project object */;
+	rootObject = CA615AA12B782AA700AF83A8 /* Project object */;
 }
