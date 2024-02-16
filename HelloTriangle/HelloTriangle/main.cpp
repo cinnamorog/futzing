@@ -5,12 +5,14 @@
 #include <stdexcept>
 #include <cstdlib>
 
+using namespace std;
+
 namespace {
 
 const uint32_t WIDTH = 800;
 const uint32_t HEIGHT = 600;
 
-const std::vector<const char*> validationLayers = {
+const vector<const char*> validationLayers = {
   "VK_LAYER_KHRONOS_validation"
 };
 
@@ -25,7 +27,7 @@ VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(
   VkDebugUtilsMessageTypeFlagsEXT messageType,
   const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
   void* pUserData) {
-  std::cerr << "validation layer: " << pCallbackData->pMessage << std::endl;
+  cerr << "validation layer: " << pCallbackData->pMessage << endl;
   return VK_FALSE;
 }
 
@@ -58,6 +60,44 @@ private:
   void initVulkan() {
     createInstance();
     setupDebugMessenger();
+    pickPhysicalDevice();
+  }
+
+  bool isDeviceSuitable(VkPhysicalDevice device) {
+    // Example: device is suitable if it supports geometry shaders.
+    // VkPhysicalDeviceProperties deviceProperties;
+    // VkPhysicalDeviceFeatures deviceFeatures;
+    // vkGetPhysicalDeviceProperties(device, &deviceProperties);
+    // vkGetPhysicalDeviceFeatures(device, &deviceFeatures);
+    // return deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU && deviceFeatures.geometryShader;
+
+    return true;
+  }
+
+  void pickPhysicalDevice() {
+    uint32_t deviceCount = 0;
+    vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
+    if (deviceCount == 0) {
+      cerr << "No physical devices present" << '\n';
+      return;
+    }
+
+    std::vector<VkPhysicalDevice> devices(deviceCount);
+    vkEnumeratePhysicalDevices(instance, &deviceCount, devices.data());
+    cout << "Devices present:" << '\n';
+    for (const auto& device : devices) {
+      if (!physicalDevice && isDeviceSuitable(device)) {
+        physicalDevice = device;
+      }
+
+      VkPhysicalDeviceProperties props;
+      vkGetPhysicalDeviceProperties(device, &props);
+      cout << '\t' << props.deviceName << '\n';
+    }
+
+    if (physicalDevice == VK_NULL_HANDLE) {
+      throw std::runtime_error("failed to find a suitable GPU!");
+    }
   }
 
   VkResult CreateDebugUtilsMessengerEXT(VkInstance instance, const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDebugUtilsMessengerEXT* pDebugMessenger) {
@@ -93,7 +133,7 @@ private:
     populateDebugMessengerCreateInfo(createInfo);
 
     if (CreateDebugUtilsMessengerEXT(instance, &createInfo, nullptr, &debugMessenger) != VK_SUCCESS) {
-      throw std::runtime_error("failed to set up debug messenger!");
+      throw runtime_error("failed to set up debug messenger!");
     }
   }
 
@@ -117,7 +157,7 @@ private:
     uint32_t layerCount;
     vkEnumerateInstanceLayerProperties(&layerCount, nullptr);
 
-    std::vector<VkLayerProperties> availableLayers(layerCount);
+    vector<VkLayerProperties> availableLayers(layerCount);
     vkEnumerateInstanceLayerProperties(&layerCount, availableLayers.data());
 
     for (const char* layerName : validationLayers) {
@@ -138,12 +178,12 @@ private:
     return true;
   }
 
-  std::vector<const char*> getRequiredExtensions() {
+  vector<const char*> getRequiredExtensions() {
     uint32_t glfwExtensionCount = 0;
     const char** glfwExtensions;
     glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
 
-    std::vector<const char*> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
+    vector<const char*> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
 
     if (enableValidationLayers) {
       extensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
@@ -156,7 +196,7 @@ private:
 
   void createInstance() {
     if (enableValidationLayers && !checkValidationLayerSupport()) {
-      throw std::runtime_error("validation layers requested, but not available!");
+      throw runtime_error("validation layers requested, but not available!");
     }
 
     VkApplicationInfo appInfo{};
@@ -179,7 +219,7 @@ private:
       createInfo.enabledLayerCount = 0;
     }
 
-    std::vector<const char*> requiredExtensions = getRequiredExtensions();
+    vector<const char*> requiredExtensions = getRequiredExtensions();
     createInfo.enabledExtensionCount = (uint32_t)requiredExtensions.size();
     createInfo.ppEnabledExtensionNames = requiredExtensions.data();
 
@@ -187,11 +227,11 @@ private:
 
     uint32_t extensionCount = 0;
     vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, nullptr);
-    std::vector<VkExtensionProperties> extensions(extensionCount);
+    vector<VkExtensionProperties> extensions(extensionCount);
     vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, extensions.data());
-    std::cout << "available extensions:\n";
+    cout << "Available extensions:\n";
     for (const auto& extension : extensions) {
-        std::cout << '\t' << extension.extensionName << '\n';
+        cout << '\t' << extension.extensionName << '\n';
     }
 
     // For enabling validation layers in instance creation/destruction.
@@ -208,13 +248,14 @@ private:
 
     VkResult result = vkCreateInstance(&createInfo, nullptr, &instance);
     if (result != VK_SUCCESS) {
-        throw std::runtime_error("failed to create instance!");
+        throw runtime_error("failed to create instance!");
     }
   }
 
   GLFWwindow* window = nullptr;
   VkInstance instance;
   VkDebugUtilsMessengerEXT debugMessenger;
+  VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
 };
 
 int main() {
@@ -222,8 +263,8 @@ int main() {
 
     try {
         app.run();
-    } catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
+    } catch (const exception& e) {
+        cerr << e.what() << endl;
         return EXIT_FAILURE;
     }
 
