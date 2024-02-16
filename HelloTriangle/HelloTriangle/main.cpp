@@ -103,8 +103,7 @@ private:
     // and device-specific versions, so by specifying them here compatibility with
     // older versions is guaranteed.
     vector<const char*> extensions;
-//    extensions.push_back("VK_KHR_portability_subset");
-//    extensions.push_back("VK_KHR_get_physical_device_properties2");
+    extensions.push_back("VK_KHR_portability_subset");
     createInfo.enabledExtensionCount = (uint32_t)extensions.size();
     createInfo.ppEnabledExtensionNames = extensions.data();
     if (enableValidationLayers) {
@@ -271,8 +270,7 @@ private:
     }
 
     extensions.emplace_back(VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME);
-//    extensions.push_back("VK_KHR_portability_subset");
-//    extensions.push_back("VK_KHR_get_physical_device_properties2");
+    extensions.push_back(VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_EXTENSION_NAME);
 
     return extensions;
   }
