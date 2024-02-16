@@ -22,6 +22,14 @@ const bool enableValidationLayers = false;
 const bool enableValidationLayers = true;
 #endif
 
+struct QueueFamilyIndices {
+  optional<uint32_t> graphicsFamily;
+
+  bool isComplete() {
+    return graphicsFamily.has_value();
+  }
+};
+
 VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(
   VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
   VkDebugUtilsMessageTypeFlagsEXT messageType,
@@ -63,15 +71,36 @@ private:
     pickPhysicalDevice();
   }
 
-  bool isDeviceSuitable(VkPhysicalDevice device) {
-    // Example: device is suitable if it supports geometry shaders.
-    // VkPhysicalDeviceProperties deviceProperties;
-    // VkPhysicalDeviceFeatures deviceFeatures;
-    // vkGetPhysicalDeviceProperties(device, &deviceProperties);
-    // vkGetPhysicalDeviceFeatures(device, &deviceFeatures);
-    // return deviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU && deviceFeatures.geometryShader;
+  QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device) {
+    QueueFamilyIndices indices;
+    uint32_t queueFamilyCount = 0;
+    vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, nullptr);
+    if (queueFamilyCount == 0) {
+      throw runtime_error("Device has no queue families");
+    }
 
-    return true;
+    // Return the indicies of all queue families that support graphics operations.
+    std::vector<VkQueueFamilyProperties> queueFamilies(queueFamilyCount);
+    vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, queueFamilies.data());
+    int i = 0;
+    for (const auto& queueFamily : queueFamilies) {
+      if (queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT) {
+        indices.graphicsFamily = i;
+      }
+
+      if (indices.isComplete()) {
+        break;
+      }
+
+      i++;
+    }
+
+    return indices;
+  }
+
+  bool isDeviceSuitable(VkPhysicalDevice device) {
+    QueueFamilyIndices indices = findQueueFamilies(device);
+    return indices.isComplete();
   }
 
   void pickPhysicalDevice() {
