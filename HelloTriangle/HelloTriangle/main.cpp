@@ -69,8 +69,58 @@ private:
     createInstance();
     setupDebugMessenger();
     pickPhysicalDevice();
+    createLogicalDevice();
   }
 
+  // Logical device is the interface used to draw, etc. A single physical device
+  // can host multiple logical devices.
+  void createLogicalDevice() {
+    // Construct a queue.
+    QueueFamilyIndices indices = findQueueFamilies(physicalDevice);
+    VkDeviceQueueCreateInfo queueCreateInfo{};
+    queueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+    queueCreateInfo.queueFamilyIndex = indices.graphicsFamily.value();
+    queueCreateInfo.queueCount = 1;
+
+    // Only one queue will be used, but it still requires a priority.
+    float queuePriority = 1.0f;
+    queueCreateInfo.pQueuePriorities = &queuePriority;
+
+    // Specify the physical device features to be used, for now this
+    // can be empty.
+    VkPhysicalDeviceFeatures deviceFeatures{};
+
+    // Create the logical device itself.
+    VkDeviceCreateInfo createInfo{};
+    createInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+    createInfo.pQueueCreateInfos = &queueCreateInfo;
+    createInfo.queueCreateInfoCount = 1;
+    createInfo.pEnabledFeatures = &deviceFeatures;
+
+    // Specify device-specific extensions and validation layers. In recent versions
+    // of Vulkan all that's needed for validation layers is to specify them at
+    // instance-creation time, but older versions distinguished instance-specific
+    // and device-specific versions, so by specifying them here compatibility with
+    // older versions is guaranteed.
+    vector<const char*> extensions;
+//    extensions.push_back("VK_KHR_portability_subset");
+//    extensions.push_back("VK_KHR_get_physical_device_properties2");
+    createInfo.enabledExtensionCount = (uint32_t)extensions.size();
+    createInfo.ppEnabledExtensionNames = extensions.data();
+    if (enableValidationLayers) {
+      createInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
+      createInfo.ppEnabledLayerNames = validationLayers.data();
+    } else {
+      createInfo.enabledLayerCount = 0;
+    }
+
+    // Instantiate the logical device itself.
+    if (vkCreateDevice(physicalDevice, &createInfo, nullptr, &device) != VK_SUCCESS) {
+      throw std::runtime_error("failed to create logical device!");
+    }
+  }
+
+  // Queue is the interface through which commands are executed.
   QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device) {
     QueueFamilyIndices indices;
     uint32_t queueFamilyCount = 0;
@@ -103,6 +153,7 @@ private:
     return indices.isComplete();
   }
 
+  // Physical device e.g. graphics card.
   void pickPhysicalDevice() {
     uint32_t deviceCount = 0;
     vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
@@ -174,6 +225,7 @@ private:
   }
 
   void cleanup() {
+    vkDestroyDevice(device, nullptr);
     if (enableValidationLayers) {
       DestroyDebugUtilsMessengerEXT(instance, debugMessenger, nullptr);
     }
@@ -219,6 +271,8 @@ private:
     }
 
     extensions.emplace_back(VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME);
+//    extensions.push_back("VK_KHR_portability_subset");
+//    extensions.push_back("VK_KHR_get_physical_device_properties2");
 
     return extensions;
   }
@@ -285,6 +339,7 @@ private:
   VkInstance instance;
   VkDebugUtilsMessengerEXT debugMessenger;
   VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
+  VkDevice device;
 };
 
 int main() {
